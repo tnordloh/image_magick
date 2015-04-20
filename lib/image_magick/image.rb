@@ -12,7 +12,9 @@ class Image
   attr_accessor :width, :length, :size
 
   def output_dir(out: "/out")
-    File.dirname(@image) + out
+    output_dir = File.dirname(@image) + out
+    Dir.mkdir(output_dir) unless File.exists?(output_dir)
+    p output_dir
   end
 
   def image_data

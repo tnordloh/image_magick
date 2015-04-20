@@ -2,7 +2,7 @@
 
 require 'optparse'
 
-require_relative '../lib/image'
+require_relative '../lib/image_magick/image_magick'
 
 @type = '.tif'
 @new_size = 100
@@ -13,10 +13,10 @@ OptionParser.new do |opt|
   opt.parse!
 end
 
-TEMP_FILE="./temp.#{@type}"
-
 file = ARGV.shift
 
+ImageMagick.shrink(file,@new_size,@type)
+exit
 original_image = Image.new(file)
 
 image = original_image.compress(newsize: original_image.width, type: @type)
