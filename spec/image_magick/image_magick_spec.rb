@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 
-require_relative '../lib/image_magick'
+require_relative '../../lib/image_magick/image_magick'
 describe ImageMagick do
   it "produces an error if the imagemagick binaries aren't available'" do
     temp_path = ENV["PATH"]
