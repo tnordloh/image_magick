@@ -1,4 +1,7 @@
+require_relative 'image_magick/version'
+
 module ImageMagick
+
   require 'mkmf'
 
   require_relative 'image_magick/image'
