@@ -2,10 +2,10 @@ require 'minitest/autorun'
 
 require_relative '../../lib/image_magick/image'
 
-describe 'image' do
+describe ImageMagick::Image do
   it "gets file attributes" do
     test_image =  File.dirname(__FILE__) + "/data/black_white_flower.tif"
-    i = Image.new(test_image)
+    i = ImageMagick::Image.new(test_image)
     i.name.to_s.must_equal("./spec/image_magick/data/black_white_flower.tif")
     i.shortname.to_s.must_equal("black_white_flower")
     i.width.must_equal(1950)
@@ -16,7 +16,7 @@ describe 'image' do
 
   it "compresses an image" do
     test_image =  File.dirname(__FILE__) + "/data/black_white_flower.tif"
-    i = Image.new(test_image)
+    i = ImageMagick::Image.new(test_image)
     new_image = i.compress
     path = "./spec/image_magick/data/out/black_white_flower.tif"
     new_image.name.to_s.must_equal(path)

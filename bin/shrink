@@ -4,11 +4,11 @@ require 'optparse'
 
 require_relative '../lib/image_magick/image_magick'
 
-@type = '.tif'
-@new_size = 100
+type = '.tif'
+new_size = 100
 OptionParser.new do |opt|
-  opt.on('--size SIZE') { |o| @new_size = o.to_f } 
-  opt.on('--type TYPE') { |o| @type     = "." + o } 
+  opt.on('--size SIZE') { |o| new_size = o.to_f } 
+  opt.on('--type TYPE') { |o| type     = "." + o } 
   opt.on('-h')          { |o| puts o ; exit } 
   opt.parse!
 end
@@ -17,29 +17,4 @@ file = ARGV.shift
 
 p @new_size
 
-ImageMagick.shrink(file,@new_size,@type)
-exit
-original_image = Image.new(file)
-
-image = original_image.compress(newsize: original_image.width, type: @type)
-
-exit if image.size < @new_size
-
-low  = 0
-high = original_image.width 
-
-while (high - low) > 1 do 
-  @try_size = ( high + low  ) / 2
-  p "low: #{low}, high #{high}, try #{@try_size}"
-  p "reducing to (#{@try_size})"
-  image = original_image.compress(newsize: @try_size, type: @type)
-  p image.size
-  if image.size < @new_size 
-    low = @try_size
-  else
-    high = @try_size
-  end
-end
-if image.size > @new_size
-  image = original_image.compress(newsize: high - 1, type: @type)
-end
+ImageMagick.shrink(file,new_size,type)
