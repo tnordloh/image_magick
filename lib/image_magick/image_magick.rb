@@ -1,5 +1,6 @@
 class ImageMagick
   require 'mkmf'
+
   require_relative 'image'
 
   def initialize
@@ -24,10 +25,6 @@ class ImageMagick
   def self.shrink(file,size,type)
 
     temp_file="./temp.#{type}"
-
-    p "size is #{size}"
-    p "file exists?"
-    p File.exist?(file)
     original_image = Image.new(file)
 
     p original_image
@@ -40,8 +37,6 @@ class ImageMagick
 
     while (high - low) > 1 do 
       @try_size = ( high + low  ) / 2
-      p "low: #{low}, high #{high}, try #{@try_size}"
-      p "reducing to (#{@try_size})"
       image = original_image.compress(newsize: @try_size, type: type)
       p image.size
       if image.size < size

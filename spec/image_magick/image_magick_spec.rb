@@ -14,5 +14,4 @@ describe ImageMagick do
     ENV["PATH"] = temp_path
   end
 
-  it ""
 end

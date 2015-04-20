@@ -8,9 +8,9 @@ describe 'image' do
     i = Image.new(test_image)
     i.name.to_s.must_equal("./spec/image_magick/data/black_white_flower.tif")
     i.shortname.to_s.must_equal("black_white_flower")
-    i.width.must_equal(7414)
-    i.length.must_equal(10348)
-    i.size.must_equal(306.9)
+    i.width.must_equal(1950)
+    i.length.must_equal(2722)
+    i.size.must_equal(9.998)
     i.output_dir.must_equal("./spec/image_magick/data/out")
   end
 
