@@ -1,13 +1,17 @@
-module ImageMagick
-  require 'image'
+module Shrink
 
-  def self.shrink(image,size,type)
+  require_relative 'image'
 
-    TEMP_FILE="./temp.#{type}"
+  def self.shrink(file,size,type)
 
+    temp_file="./temp.#{type}"
+
+    p "file exists?"
+    p File.exist?(file)
     original_image = Image.new(file)
 
-    image = original_image.compress(newsize: original_image.width, type: @type)
+    p original_image
+    image = original_image.compress(newsize: original_image.width, type: type)
     exit if image.size < @new_size
 
     low  = 0
@@ -17,7 +21,7 @@ module ImageMagick
       @try_size = ( high + low  ) / 2
       p "low: #{low}, high #{high}, try #{@try_size}"
       p "reducing to (#{@try_size})"
-      image = original_image.compress(newsize: @try_size, type: @type)
+      image = original_image.compress(newsize: @try_size, type: type)
       p image.size
       if image.size < @new_size 
         low = @try_size
@@ -27,7 +31,7 @@ module ImageMagick
     end
 
     if image.size > @new_size
-      image = original_image.compress(newsize: high - 1, type: @type)
+      image = original_image.compress(newsize: high - 1, type: type)
     end
 
   end

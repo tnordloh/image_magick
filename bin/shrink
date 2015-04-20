@@ -7,13 +7,15 @@ require_relative '../lib/image_magick/image_magick'
 @type = '.tif'
 @new_size = 100
 OptionParser.new do |opt|
-  opt.on('--size SIZE') { |o| @new_size = o } 
+  opt.on('--size SIZE') { |o| @new_size = o.to_f } 
   opt.on('--type TYPE') { |o| @type     = "." + o } 
   opt.on('-h')          { |o| puts o ; exit } 
   opt.parse!
 end
 
 file = ARGV.shift
+
+p @new_size
 
 ImageMagick.shrink(file,@new_size,@type)
 exit

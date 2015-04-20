@@ -25,13 +25,15 @@ class ImageMagick
 
     temp_file="./temp.#{type}"
 
+    p "size is #{size}"
     p "file exists?"
     p File.exist?(file)
     original_image = Image.new(file)
 
     p original_image
     image = original_image.compress(newsize: original_image.width, type: type)
-    exit if image.size < @new_size
+    p image
+    exit if image.size < size
 
     low  = 0
     high = original_image.width 
@@ -42,14 +44,14 @@ class ImageMagick
       p "reducing to (#{@try_size})"
       image = original_image.compress(newsize: @try_size, type: type)
       p image.size
-      if image.size < @new_size 
+      if image.size < size
         low = @try_size
       else
         high = @try_size
       end
     end
 
-    if image.size > @new_size
+    if image.size > size
       image = original_image.compress(newsize: high - 1, type: type)
     end
 
