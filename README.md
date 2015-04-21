@@ -17,7 +17,8 @@ dimensions.  There are a few hard-coded parts of the script, that don't hamper
 my use of it, but that I should bring to attention.
 
 Execute the script like this
-shrink ./path/to/image [--size 100] [--type tif]
+
+shrink ./path/to/image [--size 100] [--type [tif|png|jpg]]
 
 You only need to provide image.  Size and type are defaulted to 100 megabytes
 and tif respectively.
