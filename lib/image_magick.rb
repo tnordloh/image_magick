@@ -16,9 +16,7 @@ module ImageMagick
     temp_file="./temp.#{type}"
     original_image = ImageMagick::Image.new(file)
 
-    p original_image
     image = original_image.compress(newsize: original_image.width, type: type)
-    p image
     exit if image.size < size
 
     low  = 0
@@ -27,7 +25,6 @@ module ImageMagick
     while (high - low) > 1 do 
       @try_size = ( high + low  ) / 2
       image = original_image.compress(newsize: @try_size, type: type)
-      p image.size
       if image.size < size
         low = @try_size
       else

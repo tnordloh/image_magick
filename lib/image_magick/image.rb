@@ -5,7 +5,7 @@ module ImageMagick
     require_relative '../image_magick'
 
     def initialize(file)
-      ImageMagick.exists?
+      #ImageMagick.exists?
       @image = file
       image_data
     end
@@ -15,7 +15,7 @@ module ImageMagick
     def output_dir(out: "/out")
       output_dir = File.dirname(@image) + out
       Dir.mkdir(output_dir) unless File.exists?(output_dir)
-      p output_dir
+      output_dir
     end
 
     def image_data
@@ -39,7 +39,7 @@ module ImageMagick
 
     def compress(type: '.tif', test: false, newsize: 1.0 )
       new_file = output_dir + "/" + shortname.to_s + type
-      p command = "convert #{name} -resize #{newsize} -compress lzw #{new_file}"
+      command = "convert #{name} -resize #{newsize} -compress lzw #{new_file}"
       test == true ? "#{command}" : `#{command}`
       self.class.new(new_file)
     end

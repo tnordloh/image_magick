@@ -15,6 +15,5 @@ end
 
 file = ARGV.shift
 
-p @new_size
 
 ImageMagick.shrink(file,new_size,type)
