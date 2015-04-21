@@ -26,8 +26,11 @@ and tif respectively.
 
 The output files are hard-coded to be placed in an 'out' directory, at the same
 level as the image.  For example, if we're working with a file called
+
 ~/images/myimage.tif
+
 the output file will be in 
+
 ~/images/out/myimage.tif
 
 The script is very primitive; it runs the 'identify' command to find out
