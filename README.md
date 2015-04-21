@@ -41,8 +41,12 @@ the 'shrink' algorithm is also fairly primitive.  It iteratively tries
 different sizes, using a binary search algorithm to find the best fit that
 is as close to the maximum size as possible, without exceeding that size.
 
-Run ./bin/shrink.rb -h
+run
 
+shrink -h
+
+to see command options
 Example usage:
-./bin/shrink.rb ./image.tif [--size=100] [--type=png]
-to see command line arguments
+
+shrink ./image.tif [--size=100] [--type=png]
+
