@@ -1,3 +1,7 @@
+If you're looking for a more full-featured ruby wrapper for image magick, 
+check out the 'rmagick' gem.  This one is very bare-bones, and is only useful
+for shrinking images.
+
 Prerequisites: before this gem will work, "Image Magick" must be installed
 on your computer. 
 
