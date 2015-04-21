@@ -2,7 +2,7 @@
 
 require 'optparse'
 
-require_relative '../lib/image_magick/image_magick'
+require_relative '../lib/image_magick'
 
 type = '.tif'
 new_size = 100
