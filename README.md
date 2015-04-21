@@ -13,6 +13,12 @@ You only need to provide image.  Size and type are defaulted to 100 megabytes
 and tif respectively.
 
 
+The output files are hard-coded to be placed in an 'out' directory, at the same
+level as the image.  For example, if we're working with a file called
+~/images/myimage.tif
+the output file will be in 
+~/images/out/myimage.tif
+
 The script is very primitive; it runs the 'identify' command to find out
 the size of the image.  the 'image' class will respond to things like 'size', 
 'width', and 'length'.  
