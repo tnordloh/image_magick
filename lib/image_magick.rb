@@ -17,7 +17,7 @@ module ImageMagick
     original_image = ImageMagick::Image.new(file)
 
     image = original_image.compress(newsize: original_image.width, type: type)
-    exit if image.size < size
+    return image.name if image.size < size
 
     low  = 0
     high = original_image.width 

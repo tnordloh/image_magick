@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+
+require_relative '../lib/image_magick'
+
+type = '.tif'
+new_size = 100
+@directory = nil
+OptionParser.new do |opt|
+  opt.on('--size SIZE') { |o| new_size = o.to_f } 
+  opt.on('--type TYPE') { |o| type     = "." + o } 
+  opt.on('-h')          { |o| puts o ; exit } 
+  opt.parse!
+end
+
+directory = ARGV.shift
+
+list = Dir[directory + "/*"]
+
+list.each { |file| 
+  ImageMagick.shrink(file,new_size,type) unless File.directory?(file)
+}
